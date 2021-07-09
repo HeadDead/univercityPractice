@@ -2,9 +2,7 @@ package com.company.univercitypractice.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "UNIVERCITYPRACTICE_GROUP")
@@ -16,6 +14,18 @@ public class Group extends StandardEntity {
     @Column(name = "NUMBER_NAME_GROUP", nullable = false)
     private String numberNameGroup;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "EMPLOYMENT_ID")
+    private Employment employment;
+
+    public Employment getEmployment() {
+        return employment;
+    }
+
+    public void setEmployment(Employment employment) {
+        this.employment = employment;
+    }
+
     public String getNumberNameGroup() {
         return numberNameGroup;
     }
@@ -23,4 +33,6 @@ public class Group extends StandardEntity {
     public void setNumberNameGroup(String numberNameGroup) {
         this.numberNameGroup = numberNameGroup;
     }
+
+
 }

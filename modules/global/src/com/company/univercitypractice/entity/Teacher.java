@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "UNIVERCITYPRACTICE_TEACHER")
 @Entity(name = "univercitypractice_Teacher")
-@NamePattern("%s|firstName")
+@NamePattern("%s %s|firstName,secondName")
 public class Teacher extends StandardEntity {
     private static final long serialVersionUID = 6989820262137451980L;
 
