@@ -1,0 +1,7 @@
+alter table UNIVERCITYPRACTICE_AUDITORIUM alter column CAPACITY rename to CAPACITY__U49814 ^
+alter table UNIVERCITYPRACTICE_AUDITORIUM alter column CAPACITY__U49814 set null ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM alter column NUMBER_ rename to NUMBER___U74462 ^
+alter table UNIVERCITYPRACTICE_AUDITORIUM alter column NUMBER___U74462 set null ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM alter column DTYPE rename to DTYPE__U88630 ^
+alter table UNIVERCITYPRACTICE_AUDITORIUM add column LABORATORY_ID varchar(36) ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM add column LECTURE_ID varchar(36) ;

@@ -1,0 +1,3 @@
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column DTYPE__U88630 cascade ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column NUMBER___U74462 cascade ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column CAPACITY__U49814 cascade ;

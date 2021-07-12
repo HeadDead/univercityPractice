@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://auditoriumBrowse.caption"
+        focusComponent="auditoriumsTable"
+        messagesPack="com.company.univercitypractice.web.screens.auditorium">
+    <data readOnly="true">
+        <collection id="auditoriumsDc"
+                    class="com.company.univercitypractice.entity.Auditorium">
+            <view extends="_local">
+                <property name="employment" view="_minimal">
+                    <property name="day"/>
+                    <property name="time"/>
+                    <property name="teacher" view="_minimal"/>
+                </property>
+                <property name="group" view="_minimal">
+                    <property name="numberNameGroup"/>
+                </property>
+                <property name="laboratory" view="_minimal"/>
+                <property name="lecture" view="_minimal"/>
+            </view>
+            <loader id="auditoriumsDl">
+                <query>
+                    <![CDATA[select e from univercitypractice_Auditorium e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="auditoriumsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="auditoriumsTable"
+                dataLoader="auditoriumsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="auditoriumsTable"
+                    width="100%"
+                    dataContainer="auditoriumsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="employment"/>
+                <column id="laboratory"/>
+                <column id="lecture"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="auditoriumsTable.create"/>
+                <button id="editBtn" action="auditoriumsTable.edit"/>
+                <button id="removeBtn" action="auditoriumsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
