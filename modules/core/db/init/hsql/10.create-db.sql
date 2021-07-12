@@ -8,12 +8,9 @@ create table UNIVERCITYPRACTICE_AUDITORIUM (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
-    DTYPE varchar(31),
     --
-    NUMBER_ integer not null,
-    --
-    -- from univercitypractice_Lecture
-    CAPACITY integer not null,
+    LABORATORY_NUMBERCABINET varchar(36),
+    LECTURE_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -51,6 +48,7 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     DAY_ date not null,
     TIME_ time not null,
     TEACHER_ID varchar(36) not null,
+    NAME_EMPLOYAMENT longvarchar not null,
     AUDITORIUM_ID varchar(36) not null,
     --
     primary key (ID)
@@ -67,8 +65,9 @@ create table UNIVERCITYPRACTICE_GROUP (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NUMBER_NAME_GROUP varchar(255) not null,
-    EMPLOYMENT_ID varchar(36) not null,
+    NUMBER_NAME_GROUP Название группы,
+    EMPLOYMENT_ID varchar(36),
+    AUDITORIUM_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -92,3 +91,36 @@ create table UNIVERCITYPRACTICE_STUDENT (
     primary key (ID)
 )^
 -- end UNIVERCITYPRACTICE_STUDENT
+-- begin UNIVERCITYPRACTICE_LABORATORY
+create table UNIVERCITYPRACTICE_LABORATORY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NUMBER_CABINET varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end UNIVERCITYPRACTICE_LABORATORY
+-- begin UNIVERCITYPRACTICE_LECTURE
+create table UNIVERCITYPRACTICE_LECTURE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CAPACITY integer not null,
+    NUMBER_CABINET varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end UNIVERCITYPRACTICE_LECTURE

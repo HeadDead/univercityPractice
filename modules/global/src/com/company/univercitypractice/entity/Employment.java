@@ -1,5 +1,6 @@
 package com.company.univercitypractice.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_EMPLOYMENT")
 @Entity(name = "univercitypractice_Employment")
+@NamePattern("%s|nameEmployament")
 public class Employment extends StandardEntity {
     private static final long serialVersionUID = 2788227213292533603L;
 
@@ -27,6 +29,11 @@ public class Employment extends StandardEntity {
     @JoinColumn(name = "TEACHER_ID")
     private Teacher teacher;
 
+    @NotNull
+    @Lob
+    @Column(name = "NAME_EMPLOYAMENT", nullable = false)
+    private String nameEmployament;
+
     @OneToMany(mappedBy = "employment")
     private List<Group> group;
 
@@ -34,6 +41,14 @@ public class Employment extends StandardEntity {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "AUDITORIUM_ID")
     private Auditorium auditorium;
+
+    public String getNameEmployament() {
+        return nameEmployament;
+    }
+
+    public void setNameEmployament(String nameEmployament) {
+        this.nameEmployament = nameEmployament;
+    }
 
     public Auditorium getAuditorium() {
         return auditorium;
