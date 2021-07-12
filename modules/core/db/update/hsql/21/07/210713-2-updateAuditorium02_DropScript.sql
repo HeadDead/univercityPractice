@@ -1,0 +1,1 @@
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column EMPLOYMENT_ID__U07774 cascade ;

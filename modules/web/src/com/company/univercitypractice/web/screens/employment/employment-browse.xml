@@ -40,10 +40,12 @@
             </actions>
             <columns>
                 <column id="day"/>
-                <column id="time"/>
+                <column id="duration"/>
+                <column id="startDate"/>
                 <column id="teacher"/>
-                <column id="nameEmployament"/>
+                <column id="nameEmployment"/>
                 <column id="auditorium"/>
+                <column id="endDate"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

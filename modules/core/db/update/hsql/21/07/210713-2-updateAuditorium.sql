@@ -1,0 +1,1 @@
+alter table UNIVERCITYPRACTICE_AUDITORIUM add column EMPLOYMENT_ID varchar(36) ;

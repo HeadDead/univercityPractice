@@ -46,9 +46,10 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     DELETED_BY varchar(50),
     --
     DAY_ date not null,
-    TIME_ time not null,
+    DURATION integer not null,
+    START_TIME time not null,
     TEACHER_ID varchar(36) not null,
-    NAME_EMPLOYAMENT longvarchar not null,
+    NAME_EMPLOYMENT longvarchar not null,
     AUDITORIUM_ID varchar(36) not null,
     --
     primary key (ID)
