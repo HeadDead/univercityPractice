@@ -1,5 +1,6 @@
 package com.company.univercitypractice.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -15,12 +16,23 @@ public class Group extends StandardEntity {
     @Column(name = "NUMBER_NAME_GROUP", nullable = false)
     private String numberNameGroup;
 
+    @Composition
     @OneToMany(mappedBy = "group")
     private List<Student> student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMPLOYMENT_ID")
-    private Employment employment;
+    @JoinTable(name = "UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "GROUP_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYMENT_ID"))
+    @ManyToMany
+    private List<Employment> employments;
+
+    public List<Employment> getEmployments() {
+        return employments;
+    }
+
+    public void setEmployments(List<Employment> employments) {
+        this.employments = employments;
+    }
 
     public List<Student> getStudent() {
         return student;
@@ -28,14 +40,6 @@ public class Group extends StandardEntity {
 
     public void setStudent(List<Student> student) {
         this.student = student;
-    }
-
-    public Employment getEmployment() {
-        return employment;
-    }
-
-    public void setEmployment(Employment employment) {
-        this.employment = employment;
     }
 
     public String getNumberNameGroup() {

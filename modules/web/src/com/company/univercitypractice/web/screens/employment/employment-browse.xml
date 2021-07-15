@@ -9,11 +9,9 @@
                     class="com.company.univercitypractice.entity.Employment">
             <view extends="_local">
                 <property name="teacher" view="_minimal"/>
+                <property name="auditorium" view="_minimal"/>
                 <property name="group" view="_minimal">
                     <property name="numberNameGroup"/>
-                </property>
-                <property name="auditorium" view="_minimal">
-                    <property name="numberCabinet"/>
                 </property>
             </view>
             <loader id="employmentsDl">

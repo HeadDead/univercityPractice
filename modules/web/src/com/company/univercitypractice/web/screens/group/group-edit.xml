@@ -6,8 +6,23 @@
     <data>
         <instance id="groupDc"
                   class="com.company.univercitypractice.entity.Group">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="student" view="_minimal">
+                    <property name="secondName"/>
+                    <property name="thirdName"/>
+                    <property name="numberBooks"/>
+                </property>
+                <property name="employments" view="_minimal">
+                    <property name="duration"/>
+                    <property name="startDate"/>
+                    <property name="teacher" view="_minimal"/>
+                    <property name="auditorium" view="_minimal"/>
+                    <property name="endDate"/>
+                </property>
+            </view>
             <loader/>
+            <collection id="studentDc" property="student"/>
+            <collection id="employmentsDc" property="employments"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -18,6 +33,46 @@
                 <textField id="numberNameGroupField" property="numberNameGroup"/>
             </column>
         </form>
+        <groupBox id="studentBox" caption="msg://com.company.univercitypractice.entity/Group.student">
+            <table id="studentTable" dataContainer="studentDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="firstName"/>
+                    <column id="secondName"/>
+                    <column id="thirdName"/>
+                    <column id="numberBooks"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="studentTable.create"/>
+                    <button action="studentTable.edit"/>
+                    <button action="studentTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="employmentsBox" caption="msg://com.company.univercitypractice.entity/Group.employments">
+            <table id="employmentsTable" dataContainer="employmentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="nameEmployment"/>
+                    <column id="duration"/>
+                    <column id="startDate"/>
+                    <column id="teacher"/>
+                    <column id="auditorium"/>
+                    <column id="endDate"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="employmentsTable.add"/>
+                    <button action="employmentsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

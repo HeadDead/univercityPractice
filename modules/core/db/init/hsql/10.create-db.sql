@@ -32,6 +32,7 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     TEACHER_ID varchar(36),
     NAME_EMPLOYMENT longvarchar not null,
     AUDITORIUM_ID varchar(36) not null,
+    GROUP_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -48,7 +49,6 @@ create table UNIVERCITYPRACTICE_GROUP (
     DELETED_BY varchar(50),
     --
     NUMBER_NAME_GROUP varchar(255) not null,
-    EMPLOYMENT_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -87,8 +87,15 @@ create table UNIVERCITYPRACTICE_STUDENT (
     SECOND_NAME varchar(255) not null,
     THIRD_NAME varchar(255),
     NUMBER_BOOKS integer,
-    GROUP_ID varchar(36),
+    GROUP_ID varchar(36) not null,
     --
     primary key (ID)
 )^
 -- end UNIVERCITYPRACTICE_STUDENT
+-- begin UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK
+create table UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK (
+    GROUP_ID varchar(36) not null,
+    EMPLOYMENT_ID varchar(36) not null,
+    primary key (GROUP_ID, EMPLOYMENT_ID)
+)^
+-- end UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK

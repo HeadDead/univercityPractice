@@ -27,8 +27,10 @@ public class Student extends StandardEntity {
     @Column(name = "NUMBER_BOOKS")
     @Positive
     private Integer numberBooks;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "GROUP_ID")
+    @NotNull
     private Group group;
 
     public Group getGroup() {

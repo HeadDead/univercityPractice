@@ -7,7 +7,20 @@
     <data readOnly="true">
         <collection id="groupsDc"
                     class="com.company.univercitypractice.entity.Group">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="student" view="_minimal">
+                    <property name="secondName"/>
+                    <property name="thirdName"/>
+                    <property name="numberBooks"/>
+                </property>
+                <property name="employments" view="_minimal">
+                    <property name="duration"/>
+                    <property name="startDate"/>
+                    <property name="teacher" view="_minimal"/>
+                    <property name="auditorium" view="_minimal"/>
+                    <property name="endDate"/>
+                </property>
+            </view>
             <loader id="groupsDl">
                 <query>
                     <![CDATA[select e from univercitypractice_Group e]]>

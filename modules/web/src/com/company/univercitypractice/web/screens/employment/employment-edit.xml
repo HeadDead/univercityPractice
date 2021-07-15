@@ -8,14 +8,13 @@
                   class="com.company.univercitypractice.entity.Employment">
             <view extends="_local">
                 <property name="teacher" view="_minimal"/>
+                <property name="auditorium" view="_minimal"/>
                 <property name="group" view="_minimal">
                     <property name="numberNameGroup"/>
                 </property>
-                <property name="auditorium" view="_minimal">
-                    <property name="numberCabinet"/>
-                </property>
             </view>
             <loader/>
+            <collection id="groupDc" property="group"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -41,6 +40,21 @@
                 <dateField id="endDateField" property="endDate"/>
             </column>
         </form>
+        <groupBox id="groupBox" caption="msg://com.company.univercitypractice.entity/Employment.group">
+            <table id="groupTable" dataContainer="groupDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="numberNameGroup"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="groupTable.add"/>
+                    <button action="groupTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
