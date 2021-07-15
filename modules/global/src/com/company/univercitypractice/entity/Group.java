@@ -1,5 +1,6 @@
 package com.company.univercitypractice.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_GROUP")
 @Entity(name = "univercitypractice_Group")
+@NamePattern("%s|numberNameGroup")
 public class Group extends StandardEntity {
     private static final long serialVersionUID = -2380135346715745321L;
 
@@ -15,27 +17,32 @@ public class Group extends StandardEntity {
     @Column(name = "NUMBER_NAME_GROUP", nullable = false)
     private String numberNameGroup;
 
-    @OneToMany(mappedBy = "group")
-    private List<Student> student;
+    @JoinTable(name = "UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "GROUP_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYMENT_ID"))
+    @ManyToMany
+    private List<Employment> employments;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMPLOYMENT_ID")
-    private Employment employment;
+    @JoinTable(name = "UNIVERCITYPRACTICE_STUDENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "GROUP_ID"),
+            inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
+    @ManyToMany
+    private List<Student> students;
 
-    public List<Student> getStudent() {
-        return student;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(List<Student> student) {
-        this.student = student;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
-    public Employment getEmployment() {
-        return employment;
+    public List<Employment> getEmployments() {
+        return employments;
     }
 
-    public void setEmployment(Employment employment) {
-        this.employment = employment;
+    public void setEmployments(List<Employment> employments) {
+        this.employments = employments;
     }
 
     public String getNumberNameGroup() {

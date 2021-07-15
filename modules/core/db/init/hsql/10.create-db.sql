@@ -11,7 +11,9 @@ create table UNIVERCITYPRACTICE_AUDITORIUM (
     DTYPE varchar(31),
     --
     NUMBER_CABINET integer not null,
-    NUMBER_OF_GROUP integer,
+    --
+    -- from univercitypractice_Lecture
+    NUMBER_OF_GROUP integer not null,
     --
     primary key (ID)
 )^
@@ -32,6 +34,7 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     TEACHER_ID varchar(36),
     NAME_EMPLOYMENT longvarchar not null,
     AUDITORIUM_ID varchar(36) not null,
+    GROUP_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -48,7 +51,6 @@ create table UNIVERCITYPRACTICE_GROUP (
     DELETED_BY varchar(50),
     --
     NUMBER_NAME_GROUP varchar(255) not null,
-    EMPLOYMENT_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -87,8 +89,21 @@ create table UNIVERCITYPRACTICE_STUDENT (
     SECOND_NAME varchar(255) not null,
     THIRD_NAME varchar(255),
     NUMBER_BOOKS integer,
-    GROUP_ID varchar(36),
     --
     primary key (ID)
 )^
 -- end UNIVERCITYPRACTICE_STUDENT
+-- begin UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK
+create table UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK (
+    GROUP_ID varchar(36) not null,
+    EMPLOYMENT_ID varchar(36) not null,
+    primary key (GROUP_ID, EMPLOYMENT_ID)
+)^
+-- end UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK
+-- begin UNIVERCITYPRACTICE_STUDENT_GROUP_LINK
+create table UNIVERCITYPRACTICE_STUDENT_GROUP_LINK (
+    STUDENT_ID varchar(36) not null,
+    GROUP_ID varchar(36) not null,
+    primary key (STUDENT_ID, GROUP_ID)
+)^
+-- end UNIVERCITYPRACTICE_STUDENT_GROUP_LINK

@@ -32,13 +32,24 @@ public class Employment extends StandardEntity {
     @Column(name = "NAME_EMPLOYMENT", nullable = false)
     private String nameEmployment;
 
-    @OneToMany(mappedBy = "employment")
-    private List<Group> group;
-
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "AUDITORIUM_ID")
     private Auditorium auditorium;
+
+    @ManyToMany
+    @JoinTable(name = "UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "EMPLOYMENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
+    private @NotNull List<Group> group;
+
+    public void setGroup(List<Group> group) {
+        this.group = group;
+    }
+
+    public List<Group> getGroup() {
+        return group;
+    }
 
     public Teacher getTeacher() {
         return teacher;
@@ -79,14 +90,6 @@ public class Employment extends StandardEntity {
 
     public void setNameEmployment(String nameEmployment) {
         this.nameEmployment = nameEmployment;
-    }
-
-    public List<Group> getGroup() {
-        return group;
-    }
-
-    public void setGroup(List<Group> group) {
-        this.group = group;
     }
 
 

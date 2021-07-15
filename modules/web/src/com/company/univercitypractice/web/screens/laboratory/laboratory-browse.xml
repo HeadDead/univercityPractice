@@ -34,7 +34,6 @@
             </actions>
             <columns>
                 <column id="numberCabinet"/>
-                <column id="numberOfGroup"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
