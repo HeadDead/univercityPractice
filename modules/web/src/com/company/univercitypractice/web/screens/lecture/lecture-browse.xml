@@ -33,8 +33,8 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="capacity"/>
                 <column id="numberCabinet"/>
+                <column id="numberOfGroup"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

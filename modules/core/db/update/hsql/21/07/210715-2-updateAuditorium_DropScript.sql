@@ -1,0 +1,2 @@
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column CAPACITY__U77106 cascade ;
+alter table UNIVERCITYPRACTICE_AUDITORIUM drop column NUMBER_CABINET__U23098 cascade ;

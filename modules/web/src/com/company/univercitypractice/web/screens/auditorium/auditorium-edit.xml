@@ -6,12 +6,7 @@
     <data>
         <instance id="auditoriumDc"
                   class="com.company.univercitypractice.entity.Auditorium">
-            <view extends="_local">
-                <property name="laboratory" view="_minimal"/>
-                <property name="lecture" view="_minimal">
-                    <property name="capacity"/>
-                </property>
-            </view>
+            <view extends="_local"/>
             <loader/>
         </instance>
     </data>
@@ -20,18 +15,7 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="auditoriumDc">
             <column width="350px">
-                <pickerField id="laboratoryField" property="laboratory">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-                <pickerField id="lectureField" property="lecture">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
+                <textField id="numberCabinetField" property="numberCabinet"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

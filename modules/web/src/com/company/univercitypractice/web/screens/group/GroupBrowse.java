@@ -8,5 +8,4 @@ import com.company.univercitypractice.entity.Group;
 @LookupComponent("groupsTable")
 @LoadDataBeforeShow
 public class GroupBrowse extends StandardLookup<Group> {
-
 }

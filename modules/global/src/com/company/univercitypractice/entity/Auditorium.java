@@ -2,44 +2,42 @@ package com.company.univercitypractice.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.OnDelete;
-import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
-import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Table(name = "UNIVERCITYPRACTICE_AUDITORIUM")
 @Entity(name = "univercitypractice_Auditorium")
-@NamePattern("%s %s|laboratory,lecture")
+@NamePattern("%s|numberCabinet")
 public class Auditorium extends StandardEntity {
     private static final long serialVersionUID = -6118622145986950290L;
 
-    @OnDelete(DeletePolicy.CASCADE)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LABORATORY_NUMBERCABINET")
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    private Laboratory laboratory;
+    @Column(name = "NUMBER_CABINET", nullable = false)
+    @NotNull
+    private Integer numberCabinet;
 
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    @OnDelete(DeletePolicy.CASCADE)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LECTURE_ID")
-    private Lecture lecture;
+    @Column(name = "NUMBER_OF_GROUP")
+    @NotNull
+    @Positive
+    private Integer numberOfGroup;
 
-    public Lecture getLecture() {
-        return lecture;
+    public Integer getNumberOfGroup() {
+        return numberOfGroup;
     }
 
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
+    public void setNumberOfGroup(Integer numberOfGroup) {
+        this.numberOfGroup = numberOfGroup;
     }
 
-    public Laboratory getLaboratory() {
-        return laboratory;
+    public void setNumberCabinet(Integer numberCabinet) {
+        this.numberCabinet = numberCabinet;
     }
 
-    public void setLaboratory(Laboratory laboratory) {
-        this.laboratory = laboratory;
+    public Integer getNumberCabinet() {
+        return numberCabinet;
     }
 
 }

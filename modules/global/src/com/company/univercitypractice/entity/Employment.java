@@ -6,8 +6,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalTime;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_EMPLOYMENT")
@@ -16,21 +15,15 @@ import java.util.List;
 public class Employment extends StandardEntity {
     private static final long serialVersionUID = 2788227213292533603L;
 
-    @Temporal(TemporalType.DATE)
-    @NotNull
-    @Column(name = "DAY_", nullable = false)
-    private Date day;
-
     @Column(name = "DURATION", nullable = false)
     @NotNull
     private Integer duration;
 
     @Column(name = "START_TIME", nullable = false)
     @NotNull
-    private LocalTime startDate;
+    private LocalDateTime startDate;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEACHER_ID")
     private Teacher teacher;
 
@@ -47,6 +40,22 @@ public class Employment extends StandardEntity {
     @JoinColumn(name = "AUDITORIUM_ID")
     private Auditorium auditorium;
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
     public Auditorium getAuditorium() {
         return auditorium;
     }
@@ -55,14 +64,6 @@ public class Employment extends StandardEntity {
         this.auditorium = auditorium;
     }
 
-
-    public void setStartDate(LocalTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalTime getStartDate() {
-        return startDate;
-    }
 
     public Integer getDuration() {
         return duration;
@@ -88,24 +89,9 @@ public class Employment extends StandardEntity {
         this.group = group;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public Date getDay() {
-        return day;
-    }
-
-    public void setDay(Date day) {
-        this.day = day;
-    }
 
     @MetaProperty(related = {"startDate", "duration"})
-    public LocalTime getEndDate() {
+    public LocalDateTime getEndDate() {
         return (startDate != null && duration != null) ? startDate.plusMinutes(duration):null;
     }
 }

@@ -1,1 +1,0 @@
-alter table UNIVERCITYPRACTICE_AUDITORIUM drop column LABORATORY_ID__U96107 cascade ;

@@ -1,11 +1,13 @@
 package com.company.univercitypractice.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +21,10 @@ public class Teacher extends StandardEntity {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
+    @Transient
+    @MetaProperty
+    private Employment employment;
+
     @NotNull
     @Column(name = "SECOND_NAME", nullable = false)
     private String secondName;
@@ -30,6 +36,14 @@ public class Teacher extends StandardEntity {
     @Column(name = "EMAIL", nullable = false)
     @Email
     private String email;
+
+    public void setEmployment(Employment employment) {
+        this.employment = employment;
+    }
+
+    public Employment getEmployment() {
+        return employment;
+    }
 
     public String getEmail() {
         return email;

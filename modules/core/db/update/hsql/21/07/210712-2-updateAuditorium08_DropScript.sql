@@ -1,1 +1,0 @@
-alter table UNIVERCITYPRACTICE_AUDITORIUM drop column LECTURE_ID__U12118 cascade ;

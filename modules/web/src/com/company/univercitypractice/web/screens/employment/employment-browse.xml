@@ -12,7 +12,9 @@
                 <property name="group" view="_minimal">
                     <property name="numberNameGroup"/>
                 </property>
-                <property name="auditorium" view="_minimal"/>
+                <property name="auditorium" view="_minimal">
+                    <property name="numberCabinet"/>
+                </property>
             </view>
             <loader id="employmentsDl">
                 <query>
@@ -39,7 +41,6 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="day"/>
                 <column id="duration"/>
                 <column id="startDate"/>
                 <column id="teacher"/>

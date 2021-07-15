@@ -8,5 +8,4 @@ import com.company.univercitypractice.entity.Group;
 @EditedEntityContainer("groupDc")
 @LoadDataBeforeShow
 public class GroupEdit extends StandardEditor<Group> {
-
 }

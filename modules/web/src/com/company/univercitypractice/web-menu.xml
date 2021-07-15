@@ -5,8 +5,6 @@
               caption="mainMsg://menu_config.univercitypractice_Student.browse"/>
         <item screen="univercitypractice_Teacher.browse"
               caption="mainMsg://menu_config.univercitypractice_Teacher.browse"/>
-        <item screen="univercitypractice_Auditorium.browse"
-              caption="mainMsg://menu_config.univercitypractice_Auditorium.browse"/>
         <item screen="univercitypractice_Group.browse" caption="mainMsg://menu_config.univercitypractice_Group.browse"/>
         <item screen="univercitypractice_Lecture.browse"
               caption="mainMsg://menu_config.univercitypractice_Lecture.browse"/>
@@ -14,5 +12,7 @@
               caption="mainMsg://menu_config.univercitypractice_Laboratory.browse"/>
         <item screen="univercitypractice_Employment.browse"
               caption="mainMsg://menu_config.univercitypractice_Employment.browse"/>
+        <item screen="univercitypractice_Auditorium.browse"
+              caption="mainMsg://menu_config.univercitypractice_Auditorium.browse"/>
     </menu>
 </menu-config>
