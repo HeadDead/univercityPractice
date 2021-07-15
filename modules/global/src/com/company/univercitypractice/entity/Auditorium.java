@@ -14,16 +14,15 @@ import javax.validation.constraints.NotNull;
 public class Auditorium extends StandardEntity {
     private static final long serialVersionUID = -6118622145986950290L;
 
-    @Column(name = "NUMBER_CABINET", nullable = false)
     @NotNull
+    @Column(name = "NUMBER_CABINET", nullable = false)
     private Integer numberCabinet;
-
-    public void setNumberCabinet(Integer numberCabinet) {
-        this.numberCabinet = numberCabinet;
-    }
 
     public Integer getNumberCabinet() {
         return numberCabinet;
     }
 
+    public void setNumberCabinet(Integer numberCabinet) {
+        this.numberCabinet = numberCabinet;
+    }
 }

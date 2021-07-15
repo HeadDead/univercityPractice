@@ -8,4 +8,5 @@ import com.company.univercitypractice.entity.Teacher;
 @EditedEntityContainer("teacherDc")
 @LoadDataBeforeShow
 public class TeacherEdit extends StandardEditor<Teacher> {
+
 }

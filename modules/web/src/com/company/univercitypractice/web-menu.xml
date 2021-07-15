@@ -12,7 +12,5 @@
               caption="mainMsg://menu_config.univercitypractice_Laboratory.browse"/>
         <item screen="univercitypractice_Employment.browse"
               caption="mainMsg://menu_config.univercitypractice_Employment.browse"/>
-        <item screen="univercitypractice_Auditorium.browse"
-              caption="mainMsg://menu_config.univercitypractice_Auditorium.browse"/>
     </menu>
 </menu-config>

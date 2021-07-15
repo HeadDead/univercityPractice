@@ -6,7 +6,9 @@
     <data>
         <instance id="lectureDc"
                   class="com.company.univercitypractice.entity.Lecture">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="numberCabinet"/>
+            </view>
             <loader/>
         </instance>
     </data>
