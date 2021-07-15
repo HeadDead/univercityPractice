@@ -1,4 +1,4 @@
-create table UNIVERCITYPRACTICE_EMPLOYMENT (
+create table UNIVERCITYPRACTICE_GROUP (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -8,10 +8,9 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    DAY_ date not null,
-    TIME_ time not null,
-    TEACHER_ID varchar(36) not null,
-    AUDITORIUM_ID varchar(36) not null,
+    NUMBER_NAME_GROUP varchar(255) not null,
+    EMPLOYMENT_ID varchar(36),
+    AUDITORIUM_ID varchar(36),
     --
     primary key (ID)
 );

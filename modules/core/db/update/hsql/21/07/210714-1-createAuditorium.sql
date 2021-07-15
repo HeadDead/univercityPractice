@@ -1,4 +1,4 @@
-create table UNIVERCITYPRACTICE_STUDENT (
+create table UNIVERCITYPRACTICE_AUDITORIUM (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -7,11 +7,13 @@ create table UNIVERCITYPRACTICE_STUDENT (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
+    DTYPE varchar(31),
     --
-    FIRST_NAME varchar(255) not null,
-    SECOND_NAME varchar(255) not null,
-    THIRD_NAME varchar(255),
-    NUMBER_BOOKS integer not null,
+    LABORATORY_NUMBERCABINET varchar(36),
+    LECTURE_ID varchar(36),
+    --
+    -- from univercitypractice_Lecture
+    CAPACITY integer not null,
     --
     primary key (ID)
 );

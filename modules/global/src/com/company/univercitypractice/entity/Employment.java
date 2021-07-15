@@ -1,31 +1,36 @@
 package com.company.univercitypractice.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_EMPLOYMENT")
 @Entity(name = "univercitypractice_Employment")
+@NamePattern("%s|nameEmployment")
 public class Employment extends StandardEntity {
     private static final long serialVersionUID = 2788227213292533603L;
 
-    @Temporal(TemporalType.DATE)
+    @Column(name = "DURATION", nullable = false)
     @NotNull
-    @Column(name = "DAY_", nullable = false)
-    private Date day;
+    private Integer duration;
 
-    @Temporal(TemporalType.TIME)
+    @Column(name = "START_TIME", nullable = false)
     @NotNull
-    @Column(name = "TIME_", nullable = false)
-    private Date time;
+    private LocalDateTime startDate;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEACHER_ID")
     private Teacher teacher;
+
+    @NotNull
+    @Lob
+    @Column(name = "NAME_EMPLOYMENT", nullable = false)
+    private String nameEmployment;
 
     @OneToMany(mappedBy = "employment")
     private List<Group> group;
@@ -35,12 +40,45 @@ public class Employment extends StandardEntity {
     @JoinColumn(name = "AUDITORIUM_ID")
     private Auditorium auditorium;
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
     public Auditorium getAuditorium() {
         return auditorium;
     }
 
     public void setAuditorium(Auditorium auditorium) {
         this.auditorium = auditorium;
+    }
+
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public String getNameEmployment() {
+        return nameEmployment;
+    }
+
+    public void setNameEmployment(String nameEmployment) {
+        this.nameEmployment = nameEmployment;
     }
 
     public List<Group> getGroup() {
@@ -51,27 +89,9 @@ public class Employment extends StandardEntity {
         this.group = group;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public Date getDay() {
-        return day;
-    }
-
-    public void setDay(Date day) {
-        this.day = day;
+    @MetaProperty(related = {"startDate", "duration"})
+    public LocalDateTime getEndDate() {
+        return (startDate != null && duration != null) ? startDate.plusMinutes(duration):null;
     }
 }

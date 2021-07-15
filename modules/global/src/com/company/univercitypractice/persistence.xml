@@ -3,11 +3,11 @@
     <persistence-unit name="univercityPractice" transaction-type="RESOURCE_LOCAL">
 
         <class>com.company.univercitypractice.entity.Teacher</class>
-        <class>com.company.univercitypractice.entity.Student</class>
         <class>com.company.univercitypractice.entity.Group</class>
         <class>com.company.univercitypractice.entity.Employment</class>
         <class>com.company.univercitypractice.entity.Lecture</class>
         <class>com.company.univercitypractice.entity.Auditorium</class>
         <class>com.company.univercitypractice.entity.Laboratory</class>
+        <class>com.company.univercitypractice.entity.Student</class>
     </persistence-unit>
 </persistence>

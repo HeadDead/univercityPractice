@@ -4,6 +4,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_GROUP")
 @Entity(name = "univercitypractice_Group")
@@ -14,9 +15,20 @@ public class Group extends StandardEntity {
     @Column(name = "NUMBER_NAME_GROUP", nullable = false)
     private String numberNameGroup;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToMany(mappedBy = "group")
+    private List<Student> student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EMPLOYMENT_ID")
     private Employment employment;
+
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
 
     public Employment getEmployment() {
         return employment;
