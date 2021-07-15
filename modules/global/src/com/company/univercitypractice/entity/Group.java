@@ -1,6 +1,6 @@
 package com.company.univercitypractice.entity;
 
-import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_GROUP")
 @Entity(name = "univercitypractice_Group")
+@NamePattern("%s|numberNameGroup")
 public class Group extends StandardEntity {
     private static final long serialVersionUID = -2380135346715745321L;
 
@@ -16,15 +17,25 @@ public class Group extends StandardEntity {
     @Column(name = "NUMBER_NAME_GROUP", nullable = false)
     private String numberNameGroup;
 
-    @Composition
-    @OneToMany(mappedBy = "group")
-    private List<Student> student;
-
     @JoinTable(name = "UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK",
             joinColumns = @JoinColumn(name = "GROUP_ID"),
             inverseJoinColumns = @JoinColumn(name = "EMPLOYMENT_ID"))
     @ManyToMany
     private List<Employment> employments;
+
+    @JoinTable(name = "UNIVERCITYPRACTICE_STUDENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "GROUP_ID"),
+            inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
+    @ManyToMany
+    private List<Student> students;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
     public List<Employment> getEmployments() {
         return employments;
@@ -32,14 +43,6 @@ public class Group extends StandardEntity {
 
     public void setEmployments(List<Employment> employments) {
         this.employments = employments;
-    }
-
-    public List<Student> getStudent() {
-        return student;
-    }
-
-    public void setStudent(List<Student> student) {
-        this.student = student;
     }
 
     public String getNumberNameGroup() {

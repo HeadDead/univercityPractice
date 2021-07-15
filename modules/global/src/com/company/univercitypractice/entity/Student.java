@@ -6,10 +6,11 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @Table(name = "UNIVERCITYPRACTICE_STUDENT")
 @Entity(name = "univercitypractice_Student")
-@NamePattern("%s|firstName")
+@NamePattern("%s %s|firstName,secondName")
 public class Student extends StandardEntity {
     private static final long serialVersionUID = 1082765961846963815L;
 
@@ -28,17 +29,18 @@ public class Student extends StandardEntity {
     @Positive
     private Integer numberBooks;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "GROUP_ID")
-    @NotNull
-    private Group group;
+    @ManyToMany
+    @JoinTable(name = "UNIVERCITYPRACTICE_STUDENT_GROUP_LINK",
+            joinColumns = @JoinColumn(name = "STUDENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
+    private List<Group> group;
 
-    public Group getGroup() {
-        return group;
+    public void setGroup(List<Group> group) {
+        this.group = group;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public List<Group> getGroup() {
+        return group;
     }
 
     public void setNumberBooks(Integer numberBooks) {

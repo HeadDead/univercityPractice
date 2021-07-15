@@ -16,7 +16,6 @@
         <form id="form" dataContainer="laboratoryDc">
             <column width="350px">
                 <textField id="numberCabinetField" property="numberCabinet"/>
-                <textField id="numberOfGroupField" property="numberOfGroup"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

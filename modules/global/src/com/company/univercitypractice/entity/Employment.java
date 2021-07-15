@@ -41,7 +41,7 @@ public class Employment extends StandardEntity {
     @JoinTable(name = "UNIVERCITYPRACTICE_EMPLOYMENT_GROUP_LINK",
             joinColumns = @JoinColumn(name = "EMPLOYMENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
-    private List<Group> group;
+    private @NotNull List<Group> group;
 
     public void setGroup(List<Group> group) {
         this.group = group;
