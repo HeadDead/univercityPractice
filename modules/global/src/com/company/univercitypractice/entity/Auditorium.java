@@ -3,9 +3,7 @@ package com.company.univercitypractice.entity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "UNIVERCITYPRACTICE_AUDITORIUM")
@@ -17,6 +15,16 @@ public class Auditorium extends StandardEntity {
     @NotNull
     @Column(name = "NUMBER_CABINET", nullable = false)
     private Integer numberCabinet;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "auditorium")
+    private Employment employment;
+
+    public Employment getEmployment() {
+        return employment;
+    }
+
+    public void setEmployment(Employment employment) {
+        this.employment = employment;
+    }
 
     public Integer getNumberCabinet() {
         return numberCabinet;

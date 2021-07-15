@@ -52,7 +52,7 @@ create table UNIVERCITYPRACTICE_EMPLOYMENT (
     START_TIME timestamp not null,
     TEACHER_ID varchar(36),
     NAME_EMPLOYMENT longvarchar not null,
-    AUDITORIUM_ID varchar(36) not null,
+    AUDITORIUM_ID varchar(36),
     --
     primary key (ID)
 )^
