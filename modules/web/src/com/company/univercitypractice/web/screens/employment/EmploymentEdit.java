@@ -8,8 +8,4 @@ import com.company.univercitypractice.entity.Employment;
 @EditedEntityContainer("employmentDc")
 @LoadDataBeforeShow
 public class EmploymentEdit extends StandardEditor<Employment> {
-    @Subscribe
-    public void onInitEntity(InitEntityEvent<Employment> event) {
-        event.getEntity().setDuration(90);
-    }
 }
