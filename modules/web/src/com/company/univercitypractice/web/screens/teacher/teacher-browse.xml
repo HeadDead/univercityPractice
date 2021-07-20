@@ -11,9 +11,7 @@
                 <property name="employment" view="_minimal">
                     <property name="duration"/>
                     <property name="startDate"/>
-                    <property name="teacher" view="_minimal"/>
                     <property name="auditorium" view="_minimal"/>
-                    <property name="group" view="_minimal"/>
                     <property name="endDate"/>
                 </property>
             </view>

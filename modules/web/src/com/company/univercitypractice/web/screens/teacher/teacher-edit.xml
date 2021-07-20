@@ -10,9 +10,7 @@
                 <property name="employment" view="_minimal">
                     <property name="duration"/>
                     <property name="startDate"/>
-                    <property name="teacher" view="_minimal"/>
                     <property name="auditorium" view="_minimal"/>
-                    <property name="group" view="_minimal"/>
                     <property name="endDate"/>
                 </property>
             </view>
@@ -34,22 +32,19 @@
         <groupBox id="employmentBox" caption="msg://com.company.univercitypractice.entity/Teacher.employment">
             <table id="employmentTable" dataContainer="employmentDc" width="100%" height="200px">
                 <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
                 </actions>
                 <columns>
                     <column id="nameEmployment"/>
                     <column id="duration"/>
                     <column id="startDate"/>
                     <column id="auditorium"/>
-                    <column id="group"/>
                     <column id="endDate"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="employmentTable.create"/>
-                    <button action="employmentTable.edit"/>
-                    <button action="employmentTable.remove"/>
+                    <button action="employmentTable.add"/>
+                    <button action="employmentTable.exclude"/>
                 </buttonsPanel>
             </table>
         </groupBox>

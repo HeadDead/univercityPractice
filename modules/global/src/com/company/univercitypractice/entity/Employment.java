@@ -74,7 +74,6 @@ public class Employment extends StandardEntity {
         return startDate;
     }
 
-
     public Integer getDuration() {
         return duration;
     }
@@ -90,7 +89,6 @@ public class Employment extends StandardEntity {
     public void setNameEmployment(String nameEmployment) {
         this.nameEmployment = nameEmployment;
     }
-
 
     @MetaProperty(related = {"startDate", "duration"})
     public LocalDateTime getEndDate() {

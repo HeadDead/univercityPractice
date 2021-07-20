@@ -7,5 +7,16 @@
     <context:component-scan base-package="com.company.univercitypractice"/>
     
     <gui:screens base-packages="com.company.univercitypractice.web"/>
+    <bean id="univercitypractice_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="univercitypractice_TeacharEmploymentService"
+                       value="com.company.univercitypractice.service.TeacherEmploymentService"/>
+                <entry key="univercitypractice_ValidationTimeService"
+                       value="com.company.univercitypractice.service.ValidationTimeService"/>
+            </map>
+        </property>
+    </bean>
 
 </beans>

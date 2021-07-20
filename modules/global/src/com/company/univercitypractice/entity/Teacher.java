@@ -1,13 +1,9 @@
 package com.company.univercitypractice.entity;
 
-import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -22,8 +18,10 @@ public class Teacher extends StandardEntity {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @Composition
-    @OneToMany(mappedBy = "teacher")
+    @ManyToMany
+    @JoinTable(name = "UNIVERCITYPRACTICE_TEACHER_EMPLOYMENT_LINK",
+            joinColumns = @JoinColumn(name = "TEACHER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYMENT_ID"))
     private List<Employment> employment;
 
     @NotNull
@@ -38,12 +36,12 @@ public class Teacher extends StandardEntity {
     @Email
     private String email;
 
-    public List<Employment> getEmployment() {
-        return employment;
-    }
-
     public void setEmployment(List<Employment> employment) {
         this.employment = employment;
+    }
+
+    public List<Employment> getEmployment() {
+        return employment;
     }
 
     public String getEmail() {
