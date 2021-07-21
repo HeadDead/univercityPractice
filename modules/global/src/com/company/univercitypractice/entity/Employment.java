@@ -32,8 +32,8 @@ public class Employment extends StandardEntity {
     @Column(name = "NAME_EMPLOYMENT", nullable = false)
     private String nameEmployment;
 
-    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AUDITORIUM_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Auditorium auditorium;
 
     @ManyToMany
@@ -42,12 +42,12 @@ public class Employment extends StandardEntity {
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
     private @NotNull List<Group> group;
 
-    public Auditorium getAuditorium() {
-        return auditorium;
-    }
-
     public void setAuditorium(Auditorium auditorium) {
         this.auditorium = auditorium;
+    }
+
+    public Auditorium getAuditorium() {
+        return auditorium;
     }
 
     public void setGroup(List<Group> group) {
